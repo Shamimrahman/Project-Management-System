@@ -55,7 +55,7 @@ Class Action {
 			}
 			}
 	     //check duplicate email
-		$check = $this->db->query("SELECT * FROM users where Email ='$Email' ".(!empty($Id) ? " and Id != {$Id} " : ''))->num_rows;
+		$check = $this->db->query("SELECT * FROM users where Email ='$Email' ".(!empty($Id) ? " and id != {$Id} " : ''))->num_rows;
 		if($check > 0){
 			return 2; //return 2 indicates found the duplicate email
 			exit;
