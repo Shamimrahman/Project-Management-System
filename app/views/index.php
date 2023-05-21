@@ -2,8 +2,8 @@
 <html lang="en">
 <?php session_start() ?>
 <?php 
-	if(!isset($_SESSION['login_id']))
-	    header('location:login.php');
+	if(!isset($_SESSION['login_Id']))
+	  
     include '../../config/db_connect.php';
     ob_start();
   

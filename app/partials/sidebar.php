@@ -29,14 +29,14 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./index.php?page=new_project" class="nav-link nav-new_project tree-item">
+                            <a href="./index.php?page=project" class="nav-link nav-new_project tree-item">
                                 <i class="fas fa-angle-right nav-icon"></i>
                                 <p>Add New</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="./index.php?page=project_list" class="nav-link nav-project_list tree-item">
+                            <a href="./index.php?page=projects_list" class="nav-link nav-project_list tree-item">
                                 <i class="fas fa-angle-right nav-icon"></i>
                                 <p>List</p>
                             </a>

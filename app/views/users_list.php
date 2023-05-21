@@ -61,5 +61,5 @@
 </div>
 
 <?php
- include '../controllers/user/DeleteUser.php';
+ include '../controllers/user/delete_user.php';
 ?>

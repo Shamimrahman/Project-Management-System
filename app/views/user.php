@@ -1,5 +1,5 @@
 <?php
- include '../controllers/user/createUser.php';
+ include '../controllers/user/create_user.php';
 ?>
 <div class="col-lg-12">
     <div class="card">
