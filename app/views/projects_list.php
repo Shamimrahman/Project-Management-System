@@ -121,32 +121,7 @@ table td {
     vertical-align: middle !important
 }
 </style>
-<script>
-$(document).ready(function() {
-    $('#list').dataTable()
 
-    $('.delete_project').click(function() {
-        _conf("Are you sure to delete this project?", "delete_project", [$(this).attr('data-id')])
-    })
-})
-
-function delete_project($Id) {
-    start_load()
-    $.ajax({
-        url: 'ajax.php?action=delete_project',
-        method: 'POST',
-        data: {
-            Id: $Id
-        },
-        success: function(resp) {
-            if (resp == 1) {
-                alert_toast("Data successfully deleted", 'success')
-                setTimeout(function() {
-                    location.reload()
-                }, 1500)
-
-            }
-        }
-    })
-}
-</script>
+<?php
+ include '../controllers/project/delete_project.php';
+?>
