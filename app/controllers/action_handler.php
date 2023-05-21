@@ -34,7 +34,7 @@ Class Action {
 		foreach ($_SESSION as $key => $value) {
 			unset($_SESSION[$key]); // Unsets each individual session variable
 		}
-		header("location:login.php"); 
+		header("location:../views/login.php"); 
 	}
 	
 	function save_user(){
@@ -160,6 +160,8 @@ Class Action {
 			}
 		}
 	}
+	
+	
 	function save_project(){
 		extract($_POST); // extract values from $_POST
 		$data = ""; // Initializes an empty string to store the data for the query

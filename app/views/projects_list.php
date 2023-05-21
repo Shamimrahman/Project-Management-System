@@ -98,7 +98,7 @@
                                 <div class="dropdown-divider"></div>
                                 <?php if($_SESSION['login_type'] != 2): ?>
                                 <a class="dropdown-item"
-                                    href="./index.php?page=edit_project&id=<?php echo $row['Id'] ?>">Edit</a>
+                                    href="./index.php?page=update_project&Id=<?php echo $row['Id'] ?>">Edit</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item delete_project" href="javascript:void(0)"
                                     data-id="<?php echo $row['Id'] ?>">Delete</a>

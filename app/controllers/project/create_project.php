@@ -14,7 +14,7 @@ $('#manage-project').submit(function(e) {
             if (resp == 1) {
                 alert_toast('Data successfully saved', "success");
                 setTimeout(function() {
-                    location.href = 'index.php?page=project_list'
+                    location.href = 'index.php?page=projects_list'
                 }, 2000)
             }
         }

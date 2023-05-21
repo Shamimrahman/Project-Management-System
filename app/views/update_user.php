@@ -6,5 +6,3 @@ foreach($qry as $k => $v){
 }
 include 'user.php';
 ?>
-
-//Create user functionality and update user functionality same
