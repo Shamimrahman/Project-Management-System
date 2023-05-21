@@ -234,23 +234,11 @@ $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
         uni_modal("Task Details", "view_task.php?Id=" + $(this).attr('data-id'), "mid-large")
     })
 
-    function delete_task($Id) {
-        start_load()
-        $.ajax({
-            url: 'ajax.php?action=delete_task',
-            method: 'POST',
-            data: {
-                Id: $Id
-            },
-            success: function(resp) {
-                if (resp == 1) {
-                    alert_toast("Data successfully deleted", 'success')
-                    setTimeout(function() {
-                        location.reload()
-                    }, 1500)
-
-                }
-            }
-        })
-    }
+    $('.delete_task').click(function() {
+        _conf("Are you sure to delete this task?", "delete_task", [$(this).attr('data-id')])
+    })
     </script>
+
+    <?php
+ include '../controllers/task/delete_task.php';
+?>

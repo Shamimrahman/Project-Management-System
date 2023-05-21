@@ -223,7 +223,7 @@ Class Action {
 	}
 	function delete_task(){
 		extract($_POST);
-		$delete = $this->db->query("DELETE FROM task_list where Id = $Id");
+		$delete = $this->db->query("DELETE FROM task where Id = $Id");
 		if($delete){
 			return 1;
 		}
