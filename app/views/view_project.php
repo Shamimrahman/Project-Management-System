@@ -219,3 +219,38 @@ $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
         -webkit-line-clamp: 1 !important;
     }
     </style>
+
+    <script>
+    $('#new_task').click(function() {
+        uni_modal("New Task For <?php echo ucwords($ProjectName) ?>", "task.php?pid=<?php echo $Id ?>",
+            "mid-large")
+    })
+    $('.edit_task').click(function() {
+        uni_modal("Edit Task: " + $(this).attr('data-task'), "task.php?pid=<?php echo $Id ?>&Id=" + $(
+                this)
+            .attr('data-id'), "mid-large")
+    })
+    $('.view_task').click(function() {
+        uni_modal("Task Details", "view_task.php?Id=" + $(this).attr('data-id'), "mid-large")
+    })
+
+    function delete_task($Id) {
+        start_load()
+        $.ajax({
+            url: 'ajax.php?action=delete_task',
+            method: 'POST',
+            data: {
+                Id: $Id
+            },
+            success: function(resp) {
+                if (resp == 1) {
+                    alert_toast("Data successfully deleted", 'success')
+                    setTimeout(function() {
+                        location.reload()
+                    }, 1500)
+
+                }
+            }
+        })
+    }
+    </script>
