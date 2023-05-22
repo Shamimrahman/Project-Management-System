@@ -20,9 +20,9 @@
                             <select name="status" id="Status" class="custom-select custom-select-sm">
                                 <option value="0" <?php echo isset($Status) && $Status == 0 ? 'selected' : '' ?>>Pending
                                 </option>
-                                <option value="5" <?php echo isset($Status) && $Status == 5 ? 'selected' : '' ?>>On-Hold
+                                <option value="3" <?php echo isset($Status) && $Status == 3 ? 'selected' : '' ?>>On-Hold
                                 </option>
-                                <option value="10" <?php echo isset($Status) && $Status == 10 ? 'selected' : '' ?>>Done
+                                <option value="5" <?php echo isset($Status) && $Status == 5 ? 'selected' : '' ?>>Done
                                 </option>
                             </select>
                         </div>

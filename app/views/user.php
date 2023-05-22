@@ -51,9 +51,15 @@
                                 value="<?php echo isset($Address) ? $Address : '' ?>">
                         </div>
                         <div class="form-group">
-                            <label for="" class="control-label">Status</label>
-                            <input type="text" name="Status" class="form-control form-control-sm" required
-                                value="<?php echo isset($Status) ? $Status : '' ?>">
+                            <label for="">Status</label>
+                            <select name="Status" id="Status" class="custom-select custom-select-sm">
+                                <option value="1" <?php echo isset($Status) && $Status == 1 ? 'selected' : '' ?>>
+                                    Available
+                                </option>
+                                <option value="2" <?php echo isset($Status) && $Status == 2 ? 'selected' : '' ?>>
+                                    On Leave</option>
+
+                            </select>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Password</label>

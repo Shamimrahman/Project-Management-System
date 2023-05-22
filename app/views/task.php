@@ -10,8 +10,8 @@ if(isset($_GET['Id'])){
 ?>
 <div class="container-fluid">
     <form action="" id="manage-task">
-        <input type="hidden" name="id" value="<?php echo isset($Id) ? $Id : '' ?>">
-        <input type="hidden" name="Project_Id" value="<?php echo isset($_GET['pid']) ? $_GET['pid'] : '' ?>">
+        <input type="hidden" name="Id" value="<?php echo isset($Id) ? $Id : '' ?>">
+        <input type="hidden" name="Project_Id" value="<?php echo isset($_GET['Id']) ? $_GET['Id'] : '' ?>">
         <div class="form-group">
             <label for="">Task</label>
             <input type="text" class="form-control form-control-sm" name="Title"
@@ -46,10 +46,10 @@ if(isset($_GET['Id'])){
         </div>
         <div class="form-group">
             <label for="">Status</label>
-            <select name="status" id="status" class="custom-select custom-select-sm">
-                <option value="1" <?php echo isset($status) && $status == 1 ? 'selected' : '' ?>>Pending</option>
-                <option value="2" <?php echo isset($status) && $status == 2 ? 'selected' : '' ?>>On-Progress</option>
-                <option value="3" <?php echo isset($status) && $status == 3 ? 'selected' : '' ?>>Done</option>
+            <select name="Status" id="Status" class="custom-select custom-select-sm">
+                <option value="1" <?php echo isset($Status) && $Status == 1 ? 'selected' : '' ?>>Pending</option>
+                <option value="2" <?php echo isset($Status) && $Status == 2 ? 'selected' : '' ?>>On-Progress</option>
+                <option value="3" <?php echo isset($Status) && $Status == 3 ? 'selected' : '' ?>>Done</option>
             </select>
         </div>
     </form>

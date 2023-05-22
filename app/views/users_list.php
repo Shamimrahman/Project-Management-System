@@ -19,6 +19,7 @@
                         <th>Email</th>
                         <th>Address</th>
                         <th>Role</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -26,6 +27,7 @@
                     <?php
 					$i = 1;//counter variable
 					$type = array('',"Project Manager","Developer");
+                    $Status=array('',"Available","On Leave");
 					$qry = $conn->query("SELECT * FROM users order by `Name` asc");
 					while($row= $qry->fetch_assoc()):
 					?>
@@ -35,6 +37,14 @@
                         <td><b><?php echo $row['Email'] ?></b></td>
                         <td><b><?php echo $row['Address'] ?></b></td>
                         <td><b><?php echo $type[$row['type']] ?></b></td>
+                        <td><b>
+                                <?php 
+                         if($Status[$row['Status']] =='Available'){
+                            echo "<span class='badge badge-success'>{$Status[$row['Status']]}</span>";
+                          }elseif($Status[$row['Status']] =='On Leave')
+                            echo "<span class='badge badge-danger'>{$Status[$row['Status']]}</span>";
+                            ?></b></td>
+
                         <td class="text-center">
                             <button type="button"
                                 class="btn btn-default btn-sm btn-flat border-info wave-effect text-info dropdown-toggle"

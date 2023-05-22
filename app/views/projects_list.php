@@ -73,7 +73,7 @@
 							  if($stat[$row['Status']] =='Pending'){
 							  	echo "<span class='badge badge-secondary'>{$stat[$row['Status']]}</span>";
 							  }elseif($stat[$row['Status']] =='Started'){
-							  	echo "<span class='badge badge-primary'>{$stat[$row['Status']]}</span>";
+				     	  	echo "<span class='badge badge-primary'>{$stat[$row['Status']]}</span>";
 							  }elseif($stat[$row['Status']] =='On-Progress'){
 							  	echo "<span class='badge badge-info'>{$stat[$row['Status']]}</span>";
 							  }elseif($stat[$row['Status']] =='On-Hold'){

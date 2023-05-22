@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./index.php?page=reports" class="nav-link nav-reports">
+                    <a href="./index.php?page=report" class="nav-link nav-reports">
                         <i class="fas fa-th-list nav-icon"></i>
                         <p>Report</p>
                     </a>

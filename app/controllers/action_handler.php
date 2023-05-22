@@ -26,7 +26,7 @@ Class Action {
 			}
 				return 1;
 		}else{
-			return 2;
+			return 0;
 		}
 	}
 	function logout(){
@@ -82,7 +82,7 @@ Class Action {
 				if(!in_array($key, array('Id','cpass','Password')) && !is_numeric($key))
 					$_SESSION['login_'.$key] = $value;
 			}
-					$_SESSION['login_id'] = $Id;
+					$_SESSION['login_Id'] = $Id;
 				if(isset($_FILES['img']) && !empty($_FILES['img']['tmp_name']))
 					$_SESSION['login_avatar'] = $Name;
 			return 1;

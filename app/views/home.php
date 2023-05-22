@@ -34,7 +34,7 @@ if($_SESSION['login_type'] != 1)
     <div class="col-md-8">
         <div class="card card-outline card-success">
             <div class="card-header">
-                <b>Project Progress</b>
+                <b>Project Dashboard</b>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -49,7 +49,7 @@ if($_SESSION['login_type'] != 1)
                         <thead>
                             <th>#</th>
                             <th>Project</th>
-                            <th>Progress</th>
+                            <th>Developrs</th>
                             <th>Status</th>
                             <th></th>
                         </thead>
@@ -70,7 +70,7 @@ if($_SESSION['login_type'] != 1)
                 $cprog = $conn->query("SELECT * FROM task where Project_Id = {$row['Id']} and Status = 3")->num_rows;
                 $prog = $tprog > 0 ? ($cprog/$tprog) * 100 : 0;
                 $prog = $prog > 0 ?  number_format($prog,2) : $prog;
-                $prod = $conn->query("SELECT * FROM users where Name = {$row['Id']}")->num_rows;
+                $prod = $conn->query("SELECT * FROM project where ProjectName = {$row['Id']}")->num_rows;
                 if($row['Status'] == 0 && strtotime(date('Y-m-d')) >= strtotime($row['StartDate'])):
                 if($prod  > 0  || $cprog > 0)
                   $row['Status'] = 2;
@@ -141,8 +141,7 @@ if($_SESSION['login_type'] != 1)
             <div class="col-12 col-sm-6 col-md-12">
                 <div class="small-box bg-light shadow-sm border">
                     <div class="inner">
-
-
+                        <h3><?php echo $conn->query("SELECT * FROM project $where")->num_rows; ?></h3>
                         <p>Total Projects</p>
                     </div>
                     <div class="icon">
@@ -153,8 +152,8 @@ if($_SESSION['login_type'] != 1)
             <div class="col-12 col-sm-6 col-md-12">
                 <div class="small-box bg-light shadow-sm border">
                     <div class="inner">
-
-                        <p>Total Tasks</p>
+                        <h3><?php echo $conn->query("SELECT t.*,p.ProjectName as pname,p.StartDate,p.Status as pstatus, p.EndDate,p.Id as pid FROM task t inner join project p on p.Id = t.Project_Id $where2")->num_rows; ?>
+                            <p>Total Tasks</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-tasks"></i>
