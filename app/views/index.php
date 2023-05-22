@@ -2,13 +2,13 @@
 <html lang="en">
 <?php session_start() ?>
 <?php 
-	if(!isset($_SESSION['login_Id']))
-    
+    if(!isset($_SESSION['login_Id']))
+    header('location:login.php');
     include '../../config/db_connect.php';
     ob_start();
   
-  ob_end_flush();
-
+    ob_end_flush();
+ 
 	include '../partials/header.php' 
 ?>
 

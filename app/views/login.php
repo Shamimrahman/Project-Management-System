@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-session_start();
+if(!isset($_SESSION['login_Id']))
 include '../../config/db_connect.php';
-  ob_start();
-  // if(!isset($_SESSION['system'])){
-
-  // }
-  
-  ob_end_flush();
+include '../partials/header.php';
 ?>
 <?php 
 if(isset($_SESSION['login_Id']))
@@ -64,8 +59,10 @@ header("location:index.php?page=home");
     </div>
     <!-- /.login-box -->
 
-    <?php include '../controllers/user/login_controller.php' ?>
-    <?php include '../partials/footer.php' ?>
+    <?php include '../controllers/UserController.php';
+          include '../partials/footer.php';
+            
+        ?>
 
 </body>
 

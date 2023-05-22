@@ -3,7 +3,6 @@ session_start();
 ini_set('display_errors', 1);
 Class Action {
 	private $db;
-
 	public function __construct() {
 		ob_start();
    	include '../../config/db_connect.php';
@@ -17,8 +16,7 @@ Class Action {
 
 	function login(){
 		extract($_POST);
-		$qry = $this->db->query("SELECT * FROM users WHERE Email = '".$Email."' AND Password = '".md5($Password)."'");
-
+			$qry = $this->db->query("SELECT * FROM users where Email = '".$Email."' and Password = '".md5($Password)."'  ");
 		if($qry->num_rows > 0){
 			foreach ($qry->fetch_array() as $key => $value) {
 				if($key != 'Password' && !is_numeric($key))
@@ -26,9 +24,10 @@ Class Action {
 			}
 				return 1;
 		}else{
-			return 0;
+			return 2;
 		}
 	}
+
 	function logout(){
 		session_destroy(); // Ends the current session 
 		foreach ($_SESSION as $key => $value) {

@@ -3,7 +3,7 @@ ob_start();
 date_default_timezone_set("Asia/Manila");
 
 $action = $_GET['action'];
-include 'action_handler.php';
+include 'ActionController.php';
 $crud = new Action();
 if($action == 'login'){
 	$login = $crud->login();
