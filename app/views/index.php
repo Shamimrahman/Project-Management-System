@@ -120,7 +120,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>Md.Shamim Rahman</strong>
+            <strong>Developed by Md.Shamim Rahman 💯 </strong>
 
 
         </footer>

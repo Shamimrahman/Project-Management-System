@@ -184,10 +184,11 @@ $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
                                                 data-id="<?php echo $row['Id'] ?>"
                                                 data-task="<?php echo $row['Title'] ?>">View</a>
                                             <div class="dropdown-divider"></div>
-                                            <?php if($_SESSION['login_type'] != 2): ?>
+
                                             <a class="dropdown-item edit_task" href="javascript:void(0)"
                                                 data-id="<?php echo $row['Id'] ?>"
                                                 data-task="<?php echo $row['Title'] ?>">Edit</a>
+                                            <?php if($_SESSION['login_type'] != 2): ?>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item delete_task" href="javascript:void(0)"
                                                 data-id="<?php echo $row['Id'] ?>">Delete</a>

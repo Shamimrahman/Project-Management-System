@@ -1,6 +1,7 @@
 <?php
 session_start();
 ini_set('display_errors', 1);
+
 Class Action {
 	private $db;
 	public function __construct() {
@@ -190,6 +191,7 @@ Class Action {
 			return 1;
 		}
 	}
+
 	function delete_project(){
 		extract($_POST);
 		$delete = $this->db->query("DELETE FROM project where Id = $Id");
@@ -197,6 +199,7 @@ Class Action {
 			return 1;
 		}
 	}
+
 	function save_task(){
 		extract($_POST);
 		$data = "";
@@ -220,6 +223,7 @@ Class Action {
 			return 1;
 		}
 	}
+	
 	function delete_task(){
 		extract($_POST);
 		$delete = $this->db->query("DELETE FROM task where Id = $Id");

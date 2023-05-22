@@ -40,7 +40,7 @@
 					}elseif($_SESSION['login_type'] == 2){
 						$where = " where concat('[',REPLACE(p.User_Ids,',','],['),']') LIKE '%[{$_SESSION['login_Id']}]%' ";
 					}
-					
+
 					$stat = array("Pending","Started","On-Progress","On-Hold","Over Due","Done");
 					$qry = $conn->query("SELECT t.*,p.ProjectName as pname,p.StartDate,p.Status as pstatus, p.EndDate,p.Id as pid FROM task t inner join project p on p.Id = t.Project_Id $where order by p.ProjectName asc");
 					while($row= $qry->fetch_assoc()):
@@ -61,9 +61,8 @@
 		                elseif($row['pstatus'] == 0 && strtotime(date('Y-m-d')) > strtotime($row['EndDate'])):
 		                $row['pstatus'] = 4;
 		                endif;
-
-
 					?>
+
                     <tr>
                         <td class="text-center"><?php echo $i++ ?></td>
                         <td>
@@ -103,7 +102,6 @@
                         	}
                         	?>
                         </td>
-
                     </tr>
                     <?php endwhile; ?>
                 </tbody>
@@ -121,32 +119,12 @@ table td {
 }
 </style>
 <script>
-$(document).ready(function() {
-    $('#list').dataTable()
-    $('.new_productivity').click(function() {
-        uni_modal("<i class='fa fa-plus'></i> New Progress for: " + $(this).attr('data-task'),
-            "manage_progress.php?pid=" + $(this).attr('data-pid') + "&tid=" + $(this).attr(
-                'data-tid'), 'large')
-    })
+$('.view_task').click(function() {
+    uni_modal("Task Details", "view_task.php?pid=" + $(this).attr('data-id'), "mid-large")
 })
-
-function delete_project($id) {
-    start_load()
-    $.ajax({
-        url: 'ajax.php?action=delete_task',
-        method: 'POST',
-        data: {
-            id: $id
-        },
-        success: function(resp) {
-            if (resp == 1) {
-                alert_toast("Data successfully deleted", 'success')
-                setTimeout(function() {
-                    location.reload()
-                }, 1500)
-
-            }
-        }
-    })
-}
+$('.edit_task').click(function() {
+    uni_modal("Edit Task: " + $(this).attr('data-task'), "task.php?pid=<?php echo $pid ?>&pid=" + $(
+            this)
+        .attr('data-id'), "mid-large")
+})
 </script>
