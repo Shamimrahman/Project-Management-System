@@ -33,7 +33,7 @@ if(isset($_GET['Id'])){
 
     <dl>
         <dt><b class="border-bottom border-primary">Estimated Hours</b></dt>
-        <dd><?php echo ($EstimatedHour)?></dd>
+        <dd><?php echo $EstimatedHour. ' Hr/s.'?></dd>
     </dl>
     <dl>
         <dt><b class="border-bottom border-primary">Start Date</b></dt>

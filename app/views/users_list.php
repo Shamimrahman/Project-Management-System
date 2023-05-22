@@ -1,4 +1,7 @@
-<?php include '../../config/db_connect.php' ?>
+<?php 
+ include '../../config/db_connect.php';
+ include '../controllers/UserController.php';
+?>
 
 <link rel="stylesheet" href="../../assets/css/bootstrap.css">
 <script src="../../assets/js/bootstrap.js"></script>
@@ -69,7 +72,3 @@
         </div>
     </div>
 </div>
-
-<?php
- include '../controllers/user/delete_user.php';
-?>

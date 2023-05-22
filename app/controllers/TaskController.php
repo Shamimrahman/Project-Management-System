@@ -1,4 +1,5 @@
 <script>
+//create task
 $('#manage-task').submit(function(e) {
     e.preventDefault()
     start_load()
@@ -20,4 +21,25 @@ $('#manage-task').submit(function(e) {
         }
     })
 })
+
+//delete task
+function delete_task($Id) {
+    start_load()
+    $.ajax({
+        url: '../controllers/ajax.php?action=delete_task',
+        method: 'POST',
+        data: {
+            Id: $Id
+        },
+        success: function(resp) {
+            if (resp == 1) {
+                alert_toast("Data successfully deleted", 'success')
+                setTimeout(function() {
+                    location.reload()
+                }, 1500)
+
+            }
+        }
+    })
+}
 </script>

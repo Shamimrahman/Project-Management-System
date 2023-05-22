@@ -105,5 +105,5 @@
 </div>
 
 <?php
- include '../controllers/project/create_project.php';
+ include '../controllers/ProjectController.php';
 ?>

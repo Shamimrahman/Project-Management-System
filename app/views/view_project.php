@@ -1,5 +1,7 @@
 <?php
 include '../../config/db_connect.php';
+include '../controllers/TaskController.php';
+
 $stat = array("Pending","Started","On-Progress","On-Hold","Over Due","Done");
 $qry = $conn->query("SELECT * FROM project where Id = ".$_GET['Id'])->fetch_array();
 foreach($qry as $k => $v){
@@ -97,7 +99,7 @@ $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
                     <ul class="users-list clearfix">
                         <?php 
 						if(!empty($User_Ids)):
-							$members = $conn->query("SELECT * FROM users where id in ($User_Ids)");
+							$members = $conn->query("SELECT * FROM users where Id in ($User_Ids)");
 							while($row=$members->fetch_assoc()):
 						?>
 
@@ -222,11 +224,11 @@ $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
 
     <script>
     $('#new_task').click(function() {
-        uni_modal("New Task For <?php echo ucwords($ProjectName) ?>", "task.php?pid=<?php echo $Id ?>",
+        uni_modal("New Task For <?php echo ucwords($ProjectName) ?>", "task.php?Project_Id=<?php echo $Id ?>",
             "mid-large")
     })
     $('.edit_task').click(function() {
-        uni_modal("Edit Task: " + $(this).attr('data-task'), "task.php?pid=<?php echo $Id ?>&Id=" + $(
+        uni_modal("Edit Task: " + $(this).attr('data-task'), "task.php?Project_Id=<?php echo $Id ?>&Id=" + $(
                 this)
             .attr('data-id'), "mid-large")
     })
@@ -238,7 +240,3 @@ $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
         _conf("Are you sure to delete this task?", "delete_task", [$(this).attr('data-id')])
     })
     </script>
-
-    <?php
- include '../controllers/task/delete_task.php';
-?>

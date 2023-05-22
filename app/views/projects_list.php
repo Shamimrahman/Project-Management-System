@@ -122,6 +122,8 @@ table td {
 }
 </style>
 
+
+<!-- For Delete Project Action this Controller-->
 <?php
- include '../controllers/project/delete_project.php';
+ include '../controllers/ProjectController.php';
 ?>

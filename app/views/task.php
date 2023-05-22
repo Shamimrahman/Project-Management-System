@@ -1,5 +1,7 @@
 <?php 
  include '../../config/db_connect.php';
+ include '../controllers/TaskController.php';
+ 
 if(isset($_GET['Id'])){
 	$qry = $conn->query("SELECT * FROM task where Id = ".$_GET['Id'])->fetch_array();
 	foreach($qry as $k => $v){
@@ -11,7 +13,8 @@ if(isset($_GET['Id'])){
 <div class="container-fluid">
     <form action="" id="manage-task">
         <input type="hidden" name="Id" value="<?php echo isset($Id) ? $Id : '' ?>">
-        <input type="hidden" name="Project_Id" value="<?php echo isset($_GET['Id']) ? $_GET['Id'] : '' ?>">
+        <input type="hidden" name="Project_Id"
+            value="<?php echo isset($_GET['Project_Id']) ? $_GET['Project_Id'] : '' ?>">
         <div class="form-group">
             <label for="">Task</label>
             <input type="text" class="form-control form-control-sm" name="Title"
@@ -76,7 +79,3 @@ $(document).ready(function() {
     })
 })
 </script>
-
-<?php
- include '../controllers/task/create_task.php';
-?>
