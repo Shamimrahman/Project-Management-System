@@ -6,7 +6,7 @@ Database: MySql,
 Server:XAMPP
 
 For Login:
-Project Name=> 
+Project Manager=> 
 Email:shamimrahman920@gmail.com
 Password:123456
 
