@@ -17,12 +17,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Status</label>
-                            <select name="status" id="Status" class="custom-select custom-select-sm">
+                            <select name="Status" id="Status" class="custom-select custom-select-sm">
                                 <option value="0" <?php echo isset($Status) && $Status == 0 ? 'selected' : '' ?>>Pending
                                 </option>
-                                <option value="3" <?php echo isset($Status) && $Status == 3 ? 'selected' : '' ?>>On-Hold
+                                <option value="1" <?php echo isset($Status) && $Status == 1 ? 'selected' : '' ?>>
+                                    On-Progress
                                 </option>
-                                <option value="5" <?php echo isset($Status) && $Status == 5 ? 'selected' : '' ?>>Done
+                                <option value="2" <?php echo isset($Status) && $Status == 2 ? 'selected' : '' ?>>Done
                                 </option>
                             </select>
                         </div>
@@ -45,7 +46,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <?php if($_SESSION['login_type'] == 2 ): ?>
+                    <?php if($_SESSION['login_type'] == 1 ): ?>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Project Manager</label>
@@ -68,14 +69,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Developers Team</label>
-                            <select class="form-control form-control-sm select2" multiple="multiple" name="User_Ids[]">
+                            <select class="form-control form-control-sm select2" multiple="multiple"
+                                name="Developer_Ids[]">
                                 <option></option>
                                 <?php 
               	$developers = $conn->query("SELECT *FROM users where type = 2");
               	while($row= $developers ->fetch_assoc()):
               	?>
                                 <option value="<?php echo $row['Id'] ?>"
-                                    <?php echo isset($User_Ids) && in_array($row['Id'],explode(',',$User_Ids)) ? "selected" : '' ?>>
+                                    <?php echo isset($Devloper_Ids) && in_array($row['Id'],explode(',',$Developer_Ids)) ? "selected" : '' ?>>
                                     <?php echo ucwords($row['Name']) ?></option>
                                 <?php endwhile; ?>
                             </select>

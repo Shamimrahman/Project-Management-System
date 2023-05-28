@@ -32,7 +32,7 @@
                 <tbody>
                     <?php
 					$i = 1;
-					$stat = array("Pending","Started","On-Progress","On-Hold","Over Due","Done");
+					$stat = array("Pending","On-Progress","Done");
 					$where = "";
 					if($_SESSION['login_type'] == 1){
 						$where = "where Manager_Id = '{$_SESSION['login_Id']}' ";
@@ -45,20 +45,7 @@
 						unset($trans["\""], $trans["<"], $trans[">"], $trans["<h2"]);
 						$desc = strtr(html_entity_decode($row['Description']),$trans);
 						$desc=str_replace(array("<li>","</li>"), array("",", "), $desc);
-
-					 	$tprog = $conn->query("SELECT * FROM task where Project_id = {$row['Id']}")->num_rows;
-		                $cprog = $conn->query("SELECT * FROM task where Project_id = {$row['Id']} and status = 3")->num_rows;
-						$prog = $tprog > 0 ? ($cprog/$tprog) * 100 : 0;
-		                $prog = $prog > 0 ?  number_format($prog,2) : $prog;
-		                $prod = $conn->query("SELECT * FROM task where Project_id = {$row['Id']}")->num_rows;
-						if($row['Status'] == 0 && strtotime(date('Y-m-d')) >= strtotime($row['StartDate'])):
-						if($prod  > 0  || $cprog > 0)
-		                  $row['Status'] = 2;
-		                else
-		                  $row['Status'] = 1;
-						elseif($row['Status'] == 0 && strtotime(date('Y-m-d')) > strtotime($row['EndDate'])):
-						$row['Status'] = 4;
-						endif;
+					 	
 					?>
                     <tr>
                         <th class="text-center"><?php echo $i++ ?></th>
@@ -72,15 +59,10 @@
                             <?php
 							  if($stat[$row['Status']] =='Pending'){
 							  	echo "<span class='badge badge-secondary'>{$stat[$row['Status']]}</span>";
-							  }elseif($stat[$row['Status']] =='Started'){
-				     	  	echo "<span class='badge badge-primary'>{$stat[$row['Status']]}</span>";
-							  }elseif($stat[$row['Status']] =='On-Progress'){
-							  	echo "<span class='badge badge-info'>{$stat[$row['Status']]}</span>";
-							  }elseif($stat[$row['Status']] =='On-Hold'){
-							  	echo "<span class='badge badge-warning'>{$stat[$row['Status']]}</span>";
-							  }elseif($stat[$row['Status']] =='Over Due'){
-							  	echo "<span class='badge badge-danger'>{$stat[$row['Status']]}</span>";
-							  }elseif($stat[$row['Status']] =='Done'){
+							  }
+							  elseif($stat[$row['Status']] =='On-Progress'){
+							  	echo "<span class='badge badge-info'>{$stat[$row['Status']]}</span>";}					 
+							 elseif($stat[$row['Status']] =='Done'){
 							  	echo "<span class='badge badge-success'>{$stat[$row['Status']]}</span>";
 							  }
 							?>

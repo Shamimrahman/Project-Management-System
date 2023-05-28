@@ -20,11 +20,11 @@ if(isset($_GET['Id'])){
         <dt><b class="border-bottom border-primary">Status</b></dt>
         <dd>
             <?php 
-        	if($Status == 1){
+        	if($Status == 0){
 		  		echo "<span class='badge badge-secondary'>Pending</span>";
-        	}elseif($Status == 2){
+        	}elseif($Status == 1){
 		  		echo "<span class='badge badge-primary'>On-Progress</span>";
-        	}elseif($Status == 3){
+        	}elseif($Status == 2){
 		  		echo "<span class='badge badge-success'>Done</span>";
         	}
         	?>

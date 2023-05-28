@@ -11,7 +11,7 @@
             </a>
 
         </div>
-        <div class="sidebar pb-4 mb-4">
+        <div class="sidebar bg-dark pb-4 mb-4">
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu"
                     data-accordion="false">
@@ -75,7 +75,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./index.php?page=ser" class="nav-link nav-new_user tree-item">
+                                <a href="./index.php?page=user" class="nav-link nav-new_user tree-item">
                                     <i class="fas fa-angle-right nav-icon"></i>
                                     <p>Add New</p>
                                 </a>

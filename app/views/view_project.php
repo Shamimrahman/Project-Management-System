@@ -2,24 +2,11 @@
 include '../../config/db_connect.php';
 include '../controllers/TaskController.php';
 
-$stat = array("Pending","Started","On-Progress","On-Hold","Over Due","Done");
+$stat = array("Pending","On-Progress","Done");
 $qry = $conn->query("SELECT * FROM project where Id = ".$_GET['Id'])->fetch_array();
 foreach($qry as $k => $v){
 	$$k = $v;
 }
-$tprog = $conn->query("SELECT * FROM task where Project_Id = {$Id}")->num_rows;
-$cprog = $conn->query("SELECT * FROM task where Project_Id = {$Id} and status = 3")->num_rows;
-$prog = $tprog > 0 ? ($cprog/$tprog) * 100 : 0;
-$prog = $prog > 0 ?  number_format($prog,2) : $prog;
-$prod = $conn->query("SELECT * FROM project where Id = {$Id}")->num_rows;
-if($Status == 0 && strtotime(date('Y-m-d')) >= strtotime($StartDate)):
-if($prod  > 0  || $cprog > 0)
-  $Status = 2;
-else
-  $Status = 1;
-elseif($Status == 0 && strtotime(date('Y-m-d')) > strtotime($EndDate)):
-$Status = 4;
-endif;
 $manager = $conn->query("SELECT * FROM users where Id = $Manager_Id");
 $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
 ?>
@@ -51,15 +38,9 @@ $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
                                 <dd>
                                     <?php
 									  if($stat[$Status] =='Pending'){
-									  	echo "<span class='badge badge-secondary'>{$stat[$Status]}</span>";
-									  }elseif($stat[$Status] =='Started'){
-									  	echo "<span class='badge badge-primary'>{$stat[$Status]}</span>";
-									  }elseif($stat[$Status] =='On-Progress'){
+									  	echo "<span class='badge badge-secondary'>{$stat[$Status]}</span>";}
+									  elseif($stat[$Status] =='On-Progress'){
 									  	echo "<span class='badge badge-info'>{$stat[$Status]}</span>";
-									  }elseif($stat[$Status] =='On-Hold'){
-									  	echo "<span class='badge badge-warning'>{$stat[$Status]}</span>";
-									  }elseif($stat[$Status] =='Over Due'){
-									  	echo "<span class='badge badge-danger'>{$stat[$Status]}</span>";
 									  }elseif($stat[$Status] =='Done'){
 									  	echo "<span class='badge badge-success'>{$stat[$Status]}</span>";
 									  }
@@ -98,11 +79,10 @@ $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
                 <div class="card-body">
                     <ul class="users-list clearfix">
                         <?php 
-						if(!empty($User_Ids)):
-							$members = $conn->query("SELECT * FROM users where Id in ($User_Ids)");
-							while($row=$members->fetch_assoc()):
+						if(!empty($Developer_Ids)):
+							$developers = $conn->query("SELECT * FROM users where Id in ($Developer_Ids)");
+							while($row=$developers->fetch_assoc()):
 						?>
-
 
                         <h1 class="users-list-name text-lg text-capitalize text-bold text-gray"
                             href="javascript:void(0)">
@@ -164,11 +144,11 @@ $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
                                     </td>
                                     <td>
                                         <?php 
-			                        	if($row['Status'] == 1){
+			                        	if($row['Status'] == 0){
 									  		echo "<span class='badge badge-secondary'>Pending</span>";
-			                        	}elseif($row['Status'] == 2){
+			                        	}elseif($row['Status'] == 1){
 									  		echo "<span class='badge badge-primary'>On-Progress</span>";
-			                        	}elseif($row['Status'] == 3){
+			                        	}elseif($row['Status'] == 2){
 									  		echo "<span class='badge badge-success'>Done</span>";
 			                        	}
 			                        	?>

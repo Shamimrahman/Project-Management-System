@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-if(!isset($_SESSION['login_Id']))
 include '../../config/db_connect.php';
 include '../partials/header.php';
 ?>
@@ -10,7 +9,7 @@ if(isset($_SESSION['login_Id']))
 header("location:index.php?page=home");
 
 ?>
-<?php include '../partials/header.php' ?>
+
 
 <body class="hold-transition login-page bg-black">
     <div class="login-box">

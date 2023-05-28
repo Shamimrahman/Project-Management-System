@@ -1,8 +1,10 @@
 <?php 
  include '../../config/db_connect.php';
  include '../controllers/TaskController.php';
- 
-if(isset($_GET['Id'])){
+
+
+ //edit
+ if(isset($_GET['Id'])){
 	$qry = $conn->query("SELECT * FROM task where Id = ".$_GET['Id'])->fetch_array();
 	foreach($qry as $k => $v){
 		$$k = $v; //dynamic Variable
@@ -50,9 +52,9 @@ if(isset($_GET['Id'])){
         <div class="form-group">
             <label for="">Status</label>
             <select name="Status" id="Status" class="custom-select custom-select-sm">
-                <option value="1" <?php echo isset($Status) && $Status == 1 ? 'selected' : '' ?>>Pending</option>
-                <option value="2" <?php echo isset($Status) && $Status == 2 ? 'selected' : '' ?>>On-Progress</option>
-                <option value="3" <?php echo isset($Status) && $Status == 3 ? 'selected' : '' ?>>Done</option>
+                <option value="0" <?php echo isset($Status) && $Status == 0 ? 'selected' : '' ?>>Pending</option>
+                <option value="1" <?php echo isset($Status) && $Status == 1 ? 'selected' : '' ?>>On-Progress</option>
+                <option value="2" <?php echo isset($Status) && $Status == 2 ? 'selected' : '' ?>>Done</option>
             </select>
         </div>
     </form>

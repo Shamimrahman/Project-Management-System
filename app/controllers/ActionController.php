@@ -7,14 +7,9 @@ Class Action {
 	public function __construct() {
 		ob_start();
    	include '../../config/db_connect.php';
-    
     $this->db = $conn;
 	}
-	function __destruct() {
-	    $this->db->close();
-	    ob_end_flush();
-	}
-
+	
 	function login(){
 		extract($_POST);
 			$qry = $this->db->query("SELECT * FROM users where Email = '".$Email."' and Password = '".md5($Password)."'  ");
@@ -46,7 +41,6 @@ Class Action {
 					if(empty($v))
 						continue;
 					$v = md5($v); //password hashing
-
 				}
 				if(empty($data)){
 					$data .= " $k='$v' "; // If $data is empty,the assignment is done directly. 
@@ -55,6 +49,7 @@ Class Action {
 				}
 			}
 			}
+
 	     //check duplicate email
 		$check = $this->db->query("SELECT * FROM users where Email ='$Email' ".(!empty($Id) ? " and id != {$Id} " : ''))->num_rows;
 		if($check > 0){
@@ -63,7 +58,7 @@ Class Action {
 		}
 		if(isset($_FILES['img']) && $_FILES['img']['tmp_name'] != ''){
 			$fname = strtotime(date('y-m-d H:i')).'_'.$_FILES['img']['name'];
-			$move = move_uploaded_file($_FILES['img']['tmp_name'],'assets/uploads/'. $name);
+			$move = move_uploaded_file($_FILES['img']['tmp_name'],'assets/uploads/'. $Name);
 			$data .= ", Avatar = '$Name' ";
 
 		}
@@ -94,7 +89,7 @@ Class Action {
 		$data = "";
 		foreach($_POST as $k => $v){
 			// check if key is not 'id', 'cpass', 'table', or 'password' and is not numeric
-			if(!in_array($k, array('Id','cpass','table','Password')) && !is_numeric($k)){
+			if(!in_array($k, array('Id','cpass','Password')) && !is_numeric($k)){
 
 				// build the data string for the update query
 				if(empty($data)){
@@ -166,7 +161,7 @@ Class Action {
 		extract($_POST); // extract values from $_POST
 		$data = ""; // Initializes an empty string to store the data for the query
 		foreach($_POST as $k => $v){
-			if(!in_array($k, array('Id','User_Ids')) && !is_numeric($k)){
+			if(!in_array($k, array('Id','Developer_Ids')) && !is_numeric($k)){
 				if($k == 'Description')
 					$v = htmlentities(str_replace("'","&#x1430;",$v));
 				if(empty($data)){
@@ -176,8 +171,8 @@ Class Action {
 				}
 			}
 		}
-		if(isset($User_Ids)){
-			$data .= ", User_Ids='".implode(',',$User_Ids)."' "; 
+		if(isset($Developer_Ids)){
+			$data .= ", Developer_Ids='".implode(',',$Developer_Ids)."' "; 
 			//to concatenate the elements of the $user_ids array into a string, separated by commas.
 			//the key is 'user_ids' and the value is the concatenated string of $user_ids array elements.
 			// the $user_ids variable contains an array of user IDs associated with the project.
@@ -204,7 +199,7 @@ Class Action {
 		extract($_POST);
 		$data = "";
 		foreach($_POST as $k => $v){
-			if(!in_array($k, array('id')) && !is_numeric($k)){
+			if(!in_array($k, array('Id')) && !is_numeric($k)){
 				if($k == 'Description')
 					$v = htmlentities(str_replace("'","&#x1430;",$v));
 				if(empty($data)){
@@ -232,4 +227,10 @@ Class Action {
 		}
 	}
 	
+}
+
+//close the connection
+function __destruct() {
+	 $this->db->close();
+	ob_end_flush();
 }

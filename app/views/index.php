@@ -119,7 +119,7 @@
         <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
-        <footer class="main-footer">
+        <footer class="main-footer shadow-lg">
             <strong>Developed by Md.Shamim Rahman 💯 </strong>
 
 

@@ -1,6 +1,3 @@
-<?php
- include '../controllers/UserController.php';
-?>
 <div class="col-lg-12">
     <div class="card">
         <div class="card-body">
@@ -122,3 +119,8 @@ function displayImg(input, _this) {
     }
 }
 </script>
+
+<!-- To Save User -->
+<?php
+ include '../controllers/UserController.php';
+?>

@@ -29,8 +29,8 @@
                 <tbody>
                     <?php
 					$i = 1;//counter variable
-					$type = array('',"Project Manager","Developer");
-                    $Status=array('',"Available","On Leave");
+					$type = array("","Project Manager","Developer");
+                    $Status=array("","Available","On Leave");
 					$qry = $conn->query("SELECT * FROM users order by `Name` asc");
 					while($row= $qry->fetch_assoc()):
 					?>

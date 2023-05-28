@@ -2,9 +2,9 @@
 <?php
 if(isset($_GET['id'])){
 	$type_arr = array('',"Project Manager","Developer");
-	$qry = $conn->query("SELECT * FROM users where id = ".$_GET['id'])->fetch_array();
+	$qry = $conn->query("SELECT * FROM users where Id = ".$_GET['id'])->fetch_assoc();
 foreach($qry as $k => $v){
-	$$k = $v;
+	$$k = $v; 
 }
 }
 ?>
@@ -15,13 +15,13 @@ foreach($qry as $k => $v){
             <h5 class="widget-user-desc"><?php echo $Email ?></h5>
         </div>
         <div class="widget-user-image">
-            <?php if(empty($avatar) || (!empty($avatar) && !is_file('assets/uploads/'.$avatar))): ?>
+            <?php if(empty($Avatar) || (!empty($Avatar) && !is_file('assets/uploads/'.$Avatar))): ?>
             <span
                 class="brand-image img-circle elevation-2 d-flex justify-content-center align-items-center bg-primary text-white font-weight-500"
                 style="width: 90px;height:90px">
             </span>
             <?php else: ?>
-            <img class="img-circle elevation-2" src="assets/uploads/<?php echo $avatar ?>" alt="User Avatar"
+            <img class="img-circle elevation-2" src="assets/uploads/<?php echo $Avatar ?>" alt="User Avatar"
                 style="width: 90px;height:90px;object-fit: cover">
             <?php endif ?>
         </div>
